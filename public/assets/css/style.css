@@ -1,0 +1,56 @@
+.conversation-wrap
+{
+    overflow: auto;
+    height: 500px;
+}
+#message-input
+{
+    width: 70%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.chat
+{
+    margin: 5% 0;
+}
+.msg-in
+{
+    text-align: left;
+    background-color: #0078FF;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.msg-out
+{
+    text-align: right;
+    background-color: #00C6FF;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.msg{
+    margin: 5px auto;
+    width: 97%;
+
+}
+.profile-left
+{
+    margin: 7px;
+    width: 10%;
+    height: 50px;
+    vertical-align: middle;
+
+}
+.profile-right
+{
+    margin: 7px;
+    width: 10%;
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.msg-text
+{
+    display: inline-block;
+    vertical-align: middle;
+    width: 80%;
+}
