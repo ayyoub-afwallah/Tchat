@@ -6,10 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'config\\IStorage\\IStorage' => $baseDir . '/config/IStorage.php',
     'config\\Parameters\\Parameters' => $baseDir . '/config/Parameters.php',
     'config\\Router\\Router' => $baseDir . '/config/Router.php',
-    'config\\SessionStorage\\SessionStorage' => $baseDir . '/config/SessionStorage.php',
+    'config\\SessionManager\\SessionManager' => $baseDir . '/config/SessionManager.php',
     'src\\Controller\\ChatController\\ChatController' => $baseDir . '/src/Controllers/ChatController.php',
     'src\\Controllers\\AbstractController\\AbstractController' => $baseDir . '/src/Controllers/AbstractController.php',
     'src\\Controllers\\SecurityController\\SecutiryController' => $baseDir . '/src/Controllers/SecutiryController.php',

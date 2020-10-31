@@ -1,39 +1,29 @@
 <?php
-namespace config\SessionStorage;
+namespace config\SessionManager;
 session_start();
 use config\IStorage\IStorage;
 
 /**
- * Class SessionStorage
+ * Class SessionManager
  */
-class SessionStorage implements IStorage
+class SessionManager
 {
 
 
-    /**
-     * SessionStorage constructor.
-     * @param $id
-     */
+
     function __construct($id)
     {
             session_name($id);
             session_start();
     }
 
-    /**
-     * @param $key
-     * @param $value
-     * @return mixed|void
-     */
+
     public function set($key, $value)
     {
         $_SESSION[$key] = $value;
     }
 
-    /**
-     * @param $key
-     * @return mixed
-     */
+
     public function get($key)
     {
         return $_SESSION[$key];

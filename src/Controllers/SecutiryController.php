@@ -2,15 +2,13 @@
 
 namespace src\Controllers\SecurityController;
 @session_start();
-use config\SessionStorage\SessionStorage;
+use config\SessionManager\SessionManager;
 use src\Controllers\AbstractController\AbstractController;
 
 class SecutiryController extends AbstractController
 {
     public static function index()
     {
-
-
         if (
             isset($_POST['username']) &&
             !empty($_POST['username'])
@@ -18,9 +16,9 @@ class SecutiryController extends AbstractController
 
             $username = $_POST['username'];
             // create session
-            $sessionStorage = new SessionStorage($username);
-            $sessionStorage->set('id', $username);
-            $sessionStorage->set('username', $username);
+            $sessionManager = new SessionManager($username);
+            $sessionManager->set('id', $username);
+            $sessionManager->set('username', $username);
 
             // redirect to room chat
             header("Location:/chat");
