@@ -24,6 +24,7 @@ socket_bind($socket, 0, $SOCKET_PORT);
 socket_listen($socket);
 //create & add listning socket to the list
 $clients = array($socket);
+$clients_names= array();
 //start endless loop, so that our script doesn't stop
 while (true) {
     //manage multipal connections
@@ -51,27 +52,21 @@ while (true) {
             $received_text = unmask($buf); //unmask data
             $tst_msg = json_decode($received_text); //json decode
             if ($tst_msg != null) {
-//                //saving data to database
+               //saving data to database
                 $db::insertMessage($tst_msg);
-//                $xml = simplexml_load_file("database.xml") or die("Error: Cannot open database.xml");
-//                $message = $xml->addChild("Message");
-//                $message->addChild("user", $tst_msg->name);
-//                $message->addChild("message", $tst_msg->message);
-//                $date = new DateTime('now');
-//                $message->addChild("datetime", $date->format('Y-m-d H:i:s'));
-//                echo $xml->saveXML('database.xml');
-                var_dump( $tst_msg);
             }
 
-
             //prepare data to be sent to client
-            $response_text = mask(json_encode(array('sender' => $tst_msg->sender, 'message' => $tst_msg->message)));
+            $response_text = mask(json_encode(array('sender' => $tst_msg->sender,
+                'message' => $tst_msg->message, 'clients' => json_encode($clients))));
+            $clients_names[] = $tst_msg->sender;
             send_message($response_text, $changed_socket); //send data
             break 2; //exist this loop
         }
 
         $buf = @socket_read($changed_socket, 1024, PHP_NORMAL_READ);
-        if ($buf === false) { // check disconnected client
+        if ($buf === false) {
+            // check disconnected client
             // remove client for $clients array
             $found_socket = array_search($changed_socket, $clients);
             socket_getpeername($changed_socket, $ip);

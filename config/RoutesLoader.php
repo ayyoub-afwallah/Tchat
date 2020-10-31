@@ -21,5 +21,4 @@ foreach ($RoutesList as $key => $value)
 {
     $router::set($key,$value);
 }
-if($_SERVER['REQUEST_URI'] === '/')
-    SecutiryController::index();
+

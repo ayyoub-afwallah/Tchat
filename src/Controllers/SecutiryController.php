@@ -9,6 +9,9 @@ class SecutiryController extends AbstractController
 {
     public static function index()
     {
+        if (isset($_SESSION['id'])) {
+            header("Location:/chat");
+        }
         if (
             isset($_POST['username']) &&
             !empty($_POST['username'])

@@ -23,12 +23,14 @@ $parameters = new Parameters();
     $('.conversation-wrap').scrollTop($('.conversation-wrap')[0].scrollHeight);
     }
 
-    function addMessage(type, text) {
+    function addMessage(type, text , sender = null) {
 
         var span = $('<span/>').addClass('msg-text').html(text);
+        var senderName = $('<span/>').addClass('sender-name').html(sender);
 
         if (type == 'in') {
             var icon = $('<img/>').attr('src', 'assets/img/user.png').addClass("profile-left");
+            span.prepend(senderName);
             $('<div/>').addClass('msg msg-in').appendTo('.conversation').append(icon).append(span);
         } else {
             var icon = $('<img/>').attr('src', 'assets/img/user.png').addClass("profile-left");
@@ -47,15 +49,15 @@ $parameters = new Parameters();
         hs.forEach(function (item, index) {
 
             if ("<?php echo $_SESSION['username'] ?>" == item["sender"]) {
-                addMessage('out', item['msg'])
+                addMessage('out', item['msg'],item['sender']+" : ")
             } else
-                addMessage('in', item['msg'])
+                addMessage('in', item['msg'],item['sender']+" : ")
         })
 
 
         websocket.onopen = function (ev) {
             // connection is open
-            $('.status').html("<h3>Connected</h3>");
+            $('.card-header').css('color','green')
 
 
         }
@@ -63,9 +65,10 @@ $parameters = new Parameters();
 
     websocket.onmessage = function (ev) {
         var data = JSON.parse(ev.data);
+        console.log(data);
         var msg = data.message;
         if (msg !== undefined && msg != null && msg.length > 0) {
-            addMessage('in',msg)
+            addMessage('in',msg,data.sender+" : ")
         }
     }
 

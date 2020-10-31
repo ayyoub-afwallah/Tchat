@@ -15,9 +15,10 @@
                             </div>
                             <div class="conversation-wrap">
                                 <div class=" conversation ">
+
                                         <div class="msg-in msg">
-                                           <img src="assets/img/user.png " class="profile-left">
-                                            <span class="msg-text">Cras justo od justo od justo </span>
+                                            <img src="assets/img/user.png " class="profile-left">
+                                            <span class="msg-text"><span class="sender-name">name</span>Cras justo od justo od justo </span>
                                         </div>
 
                                         <div class="msg-out msg">
