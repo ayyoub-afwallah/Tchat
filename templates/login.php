@@ -17,4 +17,4 @@
         </div>
     </div>
 </div>
-<?php require_once('include/footer.php') ?>
+<?php //require_once('include/footer.php') ?>
