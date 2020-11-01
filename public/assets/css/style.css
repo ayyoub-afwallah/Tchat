@@ -3,21 +3,22 @@
     overflow: auto;
     height: 500px;
 }
-#message-input
-{
-    width: 70%;
-    vertical-align: middle;
-    display: inline-block;
-}
 .chat
 {
     margin: 5% 0;
 }
+
+
 .sender-name
 {
     color: midnightblue;
     font-weight: bold;
     padding: 5px
+}
+.msg{
+    margin: 5px auto;
+    width: 97%;
+
 }
 .msg-in
 {
@@ -33,25 +34,11 @@
     border-top-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
-.msg{
-    margin: 5px auto;
-    width: 97%;
 
-}
-.profile-left
-{
+.profile{
     margin: 7px;
     width: 50px;
     height: 50px;
-    vertical-align: middle;
-
-}
-.profile-right
-{
-    margin: 7px;
-    width: 50px;
-    height: 50px;
-    display: inline-block;
     vertical-align: middle;
 }
 .msg-text
@@ -60,4 +47,10 @@
     vertical-align: middle;
     width: 80%;
     color: white;
+}
+#message-input
+{
+    width: 70%;
+    vertical-align: middle;
+    display: inline-block;
 }

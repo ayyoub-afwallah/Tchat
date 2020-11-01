@@ -12,7 +12,7 @@ class Parameters
     // Database Configuration
     const DB_HOST = "localhost";
     const DB_PORT = "";
-    const DB_NAME = "hiitconsulting";
+    const DB_NAME = "tchat";
     const DB_USER = "root";
     const DB_PWD  = "root";
 

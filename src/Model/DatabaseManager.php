@@ -1,8 +1,10 @@
 <?php
 
 namespace src\Model\DatabaseManager;
+
 use mysqli;
 use \PDO as PDO;
+use config\Parameters\Parameters;
 
 class DatabaseManager
 {
@@ -32,27 +34,22 @@ class DatabaseManager
 
     private function connect()
     {
+        // Create connection
+        $conn = new mysqli(Parameters::DB_HOST, Parameters::DB_USER, Parameters::DB_PWD, Parameters::DB_NAME);
 
-            // Create connection
-            $conn = new mysqli('localhost','root','root' ,'tchat');
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            self::$conn = $conn;
-            return $conn;
-    }
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-    public function query($query)
-    {
-
+        self::$conn = $conn;
+        return $conn;
     }
 
     public static function insertMessage($message)
     {
-        $sql = "INSERT INTO message (msg, sender)
-     VALUES ('$message->message', '$message->sender')";
-     $conn = self::$conn;
+        $sql = "INSERT INTO message (msg, sender) VALUES ('$message->message', '$message->sender')";
+        $conn = self::$conn;
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
@@ -62,26 +59,18 @@ class DatabaseManager
 
     public function getMessageHistory()
     {
-       $conn = self::connect();
+        $conn = self::$conn;
         $sql = "SELECT * FROM message";
         $result = $conn->query($sql);
-//
-//        if ($result->num_rows > 0) {
-//            echo "<table><tr><th>ID</th><th>Name</th></tr>";
-//            // output data of each row
-//            while($row = $result->fetch_assoc()) {
-//                echo "<tr><td>" . $row["msg"]. "</td><td>" . $row["sender"]."</td></tr>";
-//            }
-//            echo "</table>";
-//        } else {
-//            echo "0 results";
-//        }
-$data = array();
-         while($row = $result->fetch_assoc()) {
-         $data[] =['msg' =>$row['msg'],
-             'sender' =>$row['sender']];
-         }
 
+        $data = array();
+        while ($row = $result->fetch_assoc()) {
+            $data[] =
+                [
+                    'msg' => $row['msg'],
+                    'sender' => $row['sender']
+                ];
+        }
         return $data;
     }
 }

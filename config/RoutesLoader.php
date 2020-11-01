@@ -5,20 +5,18 @@ use src\Controller\ChatController\ChatController;
 use src\Controllers\SecurityController\SecutiryController;
 
 $RoutesList = [
-    "chat"=>function ()
-    {
+    "chat" => function () {
         ChatController::index();
     },
-    "login"=>function ()
-    {
+    "login" => function () {
         SecutiryController::index();
     },
 
 ];
+
 $router = new Router();
 
-foreach ($RoutesList as $key => $value)
-{
-    $router::set($key,$value);
+foreach ($RoutesList as $key => $value) {
+    $router::set($key, $value);
 }
 

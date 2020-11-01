@@ -1,4 +1,3 @@
-
 <?php require_once('include/header.php') ?>
 <div class="container">
     <div class="row">
@@ -9,13 +8,13 @@
                 <h1 class="h3 mb-3 font-weight-normal">TChat</h1>
                 <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
                 <br>
-                <button class="btn btn-lg btn-primary btn-block"  style="width: 30%;margin: auto" type="submit">Start Chat</button>
+                <button class="btn btn-lg btn-primary btn-block" style="width: 30%;margin: auto" type="submit">Start
+                    Chat
+                </button>
             </form>
         </div>
         <div class="col-md- col-sm-0 col-lg-3">
         </div>
     </div>
 </div>
-
-
 <?php require_once('include/footer.php') ?>
